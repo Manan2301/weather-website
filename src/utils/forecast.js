@@ -11,10 +11,15 @@ const forecast = (latitude, longitude, callback) => {
         }
         else {
             
-            callback(undefined,/*response.*/body.daily[0].weather[0].description + '. It is currently '+ /*response.*/body.current.temp)          
+            callback(undefined,/*response.*/body.daily[0].weather[0].description[0].toUpperCase()
+             + body.daily[0].weather[0].description.substring(1) + 
+             ' ,with a high of ' + body.daily[0].temp.max + ' degrees and a low of '+ body.daily[0].temp.min 
+             +' degrees. \n'+ 'It is currently '+ /*response.*/body.current.temp + ' degrees. UV index for today is ' + body.daily[0].uvi 
+             + '. Humidity content is ' + body.daily[0].humidity +' %' )          
             
         }
     })
 }
 
 module.exports = forecast
+
